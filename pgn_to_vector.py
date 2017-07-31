@@ -10,11 +10,13 @@
 import chess
 import chess.pgn
 from random import randint
+import time
 
 pieces = {'P': 1, 'N': 3, 'B': 4, 'R': 5, 'Q': 9, 'K': 15,
         'p': -1, 'n': -3, 'b': -4, 'r': -5, 'q': -9, 'k': -15}
 
 def main():
+    start = time.time()
     # dictionary corresponding to piece values, for vectorization
 
     # loop through pgns
@@ -33,6 +35,8 @@ def main():
         node = next_node
     # send it to vectorizing function
     vectorize_position(node.board().epd())
+    end = time.time()
+    print(end - start)
 
 
 
@@ -54,7 +58,7 @@ def vectorize_position(epd):
             # fill next x slots with zeroes / leave them as is
             slot += eval(c)
         elif c == '/':
-            print('/')
+            pass
         else:
             vector[slot] = pieces[c]
             slot += 1
@@ -80,8 +84,8 @@ def vectorize_position(epd):
         vector[slot] = 1
 
     #return vector
-    print(epd)
-    print(vector)
+    # print(epd)
+    # print(vector)
     return vector
 
 
