@@ -1,0 +1,78 @@
+# input vector is 1 by 71 values
+# first 64 correspond to piece existence and positions
+# next 2 correspond to whether white or black is in check
+# next 4 correspond to castling rights for each player
+# next 1 corresponds to which player's turn it is
+
+[white A pawn existence     | 0/1
+ white A pawn position      | 0-64
+ white B pawn existence     | 0/1
+ white B pawn position      | 0-64
+ white C pawn existence     | 0/1
+ white C pawn position      | 0-64
+ white D pawn existence     | 0/1
+ white D pawn position      | 0-64
+ white E pawn existence     | 0/1
+ white E pawn position      | 0-64
+ white F pawn existence     | 0/1
+ white F pawn position      | 0-64
+ white G pawn existence     | 0/1
+ white G pawn position      | 0-64
+ white H pawn existence     | 0/1
+ white H pawn position      | 0-64
+ black A pawn existence     | 0/1
+ black A pawn position      | 0-64
+ black B pawn existence     | 0/1
+ black B pawn position      | 0-64
+ black C pawn existence     | 0/1
+ black C pawn position      | 0-64
+ black D pawn existence     | 0/1
+ black D pawn position      | 0-64
+ black E pawn existence     | 0/1
+ black E pawn position      | 0-64
+ black F pawn existence     | 0/1
+ black F pawn position      | 0-64
+ black G pawn existence     | 0/1
+ black G pawn position      | 0-64
+ black H pawn existence     | 0/1
+ black H pawn position      | 0-64
+ white A rook existence     | 0/1
+ white A rook position      | 0-64
+ white B knight existence   | 0/1
+ white B knight position    | 0-64
+ white C bishop existence   | 0/1
+ white C bishop position    | 0-64
+ white king existence       | 0/1
+ white king position        | 0-64
+ white queen existence      | 0/1
+ white queen position       | 0-64
+ white F bishop existence   | 0/1
+ white F bishop position    | 0-64
+ white G knight existence   | 0/1
+ white G knight position    | 0-64
+ white H rook existence     | 0/1
+ white H rook position      | 0-64
+ black A rook existence     | 0/1
+ black A rook position      | 0-64
+ black B knight existence   | 0/1
+ black B knight position    | 0-64
+ black C bishop existence   | 0/1
+ black C bishop position    | 0-64
+ black king existence       | 0/1
+ black king position        | 0-64
+ black queen existence      | 0/1
+ black queen position       | 0-64
+ black F bishop existence   | 0/1
+ black F bishop position    | 0-64
+ black G knight existence   | 0/1
+ black G knight position    | 0-64
+ black H rook existence     | 0/1
+ black H rook position      | 0-64
+ White king in check        | 0/1
+ Black king in check        | 0/1
+ white can kingside castle  | 0/1
+ white can queenside castle | 0/1
+ black can kingside castle  | 0/1
+ black can queenside castle | 0/1
+ white/black turn           | 0/1
+ ]

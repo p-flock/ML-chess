@@ -13,7 +13,7 @@ model.compile(optimizer='rmsprop',
 
 # Generate dummy data
 import numpy as np
-data = np.random.random((1000, 100))
+data = np.random.random((1000, 71))
 labels = np.random.randint(2, size=(1000, 1))
 
 # Train the model, iterating on the data in batches of 32 samples
