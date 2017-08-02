@@ -46,14 +46,18 @@ def main():
                 next_node = node.variations[0]
                 node = next_node
             # send it to vectorizing function
-            training_positions.append(vectorize_position(node.board().epd()))
-            training_scores.append(comp_eval(node.board()))
+            evaluation = comp_eval(node.board())
+            if evaluation is None:
+                continue
+            else:
+                training_positions.append(vectorize_position(node.board().epd()))
+                training_scores.append(evaluation)
 
             game = chess.pgn.read_game(pgn)
 
    # pickle data to load into model later
     data = [training_positions, training_scores]
-    pickle.dump( data , open("training_set_1.p", "wb") )
+    pickle.dump( data , open("training_set_2.p", "wb") )
     end = time.time()
     print(end - start)
     print(len(training_positions))
