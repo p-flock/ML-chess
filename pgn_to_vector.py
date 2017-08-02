@@ -13,6 +13,8 @@ import chess.uci
 from random import randint
 import pickle
 import time
+import signal
+import sys
 
 # dictionary corresponding to piece values, for vectorization
 pieces = {'P': 1, 'N': 3, 'B': 4, 'R': 5, 'Q': 9, 'K': 15,
@@ -23,15 +25,18 @@ engine = chess.uci.popen_engine("/root/Stockfish/src/stockfish")
 info_handler = chess.uci.InfoHandler()
 engine.info_handlers.append(info_handler)
 
+# initialize output vectors for saving on interrupt
+
+training_positions = []
+training_scores = []
+
+
 def main():
     start = time.time()
 
-    training_positions = []
-    training_scores = []
-
     # loop through pgns (Obviously change from a single game, but works on a single game too.)
     # Hideously long runtime on a large file.
-    with open("large_chess_database.pgn", "r", encoding="latin-1") as pgn:
+    with open("2014games.pgn", "r", encoding="latin-1") as pgn:
         game = chess.pgn.read_game(pgn)
         while game != None:
             node = game
@@ -53,7 +58,7 @@ def main():
 
    # pickle data to load into model later
     data = [training_positions, training_scores]
-    pickle.dump( data , open("training_set_1.p", "wb") )
+    pickle.dump( data , open("2014_games_xy_data.p", "wb") )
     end = time.time()
     print(end - start)
     print(len(training_positions))
@@ -109,8 +114,19 @@ def vectorize_position(epd):
 # run position through chess engine
 def comp_eval(board):
     engine.position(board)
-    engine.go(movetime=1000)
+    engine.go(movetime=500)
     return info_handler.info["score"][1].cp
+
+def signal_handler(signal, frame):
+    data = [training_positions, training_scores]
+    x = len(training_positions)
+    pickle_name = str(x)
+    pickle.dump( data , open(str(x) + "interrupt" + ".p", "wb") )
+    sys.exit(0)
+
+#register signal handler in event of ctrl-c
+signal.signal(signal.SIGINT, signal_handler)
+   
 
 if __name__ == "__main__":
     main()
