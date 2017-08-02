@@ -33,7 +33,7 @@ def main():
     # Hideously long runtime on a large file.
     with open("single_game_test.pgn", "r", encoding="latin-1") as pgn:
         game = chess.pgn.read_game(pgn)
-        while True:
+        while game != None:
             game = chess.pgn.read_game(pgn)
             node = game
             moves = node.main_line()
