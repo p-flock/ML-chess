@@ -19,9 +19,9 @@ pieces = {'P': 1, 'N': 3, 'B': 4, 'R': 5, 'Q': 9, 'K': 15,
         'p': -1, 'n': -3, 'b': -4, 'r': -5, 'q': -9, 'k': -15}
 
 #initialize chess engine
-engine = chess.uci.popen_engine("/root/Stockfish/src/stockfish")
-info_handler = chess.uci.InfoHandler()
-engine.info_handlers.append(info_handler)
+# engine = chess.uci.popen_engine("/root/Stockfish/src/stockfish")
+# info_handler = chess.uci.InfoHandler()
+# engine.info_handlers.append(info_handler)
 
 def main():
     start = time.time()
@@ -34,7 +34,6 @@ def main():
     with open("single_game_test.pgn", "r", encoding="latin-1") as pgn:
         game = chess.pgn.read_game(pgn)
         while game != None:
-            game = chess.pgn.read_game(pgn)
             node = game
             moves = node.main_line()
             game_length = node.board().variation_san(moves).count('.')
@@ -45,7 +44,7 @@ def main():
                 node = next_node
             # send it to vectorizing function
             training_positions.append(vectorize_position(node.board().epd()))
-            training_scores.append(comp_eval(node.board()))
+            # training_scores.append(comp_eval(node.board()))
 
             game = chess.pgn.read_game(pgn)
 
