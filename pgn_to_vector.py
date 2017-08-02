@@ -31,7 +31,7 @@ def main():
 
     # loop through pgns (Obviously change from a single game, but works on a single game too.)
     # Hideously long runtime on a large file.
-    with open("single_game_test.pgn", "r", encoding="latin-1") as pgn:
+    with open("large_chess_database.pgn", "r", encoding="latin-1") as pgn:
         game = chess.pgn.read_game(pgn)
         while game != None:
             node = game
