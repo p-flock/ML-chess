@@ -101,8 +101,8 @@ def vectorize_position(epd):
 
 
 # run position through chess engine
-def comp_eval():
-    engine.position(board)
+def comp_eval(epd):
+    engine.position(epd)
     engine.go(movetime=1000)
     return info_handler.info["score"][1]
 
