@@ -110,7 +110,7 @@ def vectorize_position(epd):
 def comp_eval(board):
     engine.position(board)
     engine.go(movetime=1000)
-    return info_handler.info["score"][1]
+    return info_handler.info["score"][1].cp
 
 if __name__ == "__main__":
     main()
