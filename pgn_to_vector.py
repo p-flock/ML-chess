@@ -46,7 +46,7 @@ def main():
                 node = next_node
             # send it to vectorizing function
             training_positions.append(vectorize_position(node.board().epd()))
-            training_scores.append(comp_eval(node.board.epd()))
+            training_scores.append(comp_eval(node.board().epd()))
 
    # pickle data to load into model later
     data = [training_positions, training_scores]
