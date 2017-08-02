@@ -19,7 +19,25 @@ def main():
     start = time.time()
     # dictionary corresponding to piece values, for vectorization
 
-    # loop through pgns
+    # loop through pgns (Obviously change from a single game, but works on a single game too.)
+    # Hideously long runtime on a large file.
+    with open("single_game_test.pgn", "r", encoding="latin-1") as pgn:
+        while True:
+            game = chess.pgn.read_game(pgn)
+            if game == None:
+                break
+            node = game
+            moves = node.main_line()
+            game_length = node.board().variation_san(moves).count('.')
+            game_length = (game_length * 2)
+            position = randint(1, game_length)
+            for x in range(1, position):
+                next_node = node.variations[0]
+                node = next_node
+            # send it to vectorizing function
+            vectorize_position(node.board().epd())
+            end = time.time()
+            print(end - start)
 
     #for single pgn
     with open("single_game_test.pgn") as pgn:
