@@ -12,7 +12,7 @@ import chess.pgn
 import chess.uci
 from random import randint
 import pickle
-# import time
+import time
 
 # dictionary corresponding to piece values, for vectorization
 pieces = {'P': 1, 'N': 3, 'B': 4, 'R': 5, 'Q': 9, 'K': 15,
@@ -24,7 +24,7 @@ info_handler = chess.uci.InfoHandler()
 engine.info_handlers.append(info_handler)
 
 def main():
-    # start = time.time()
+    start = time.time()
 
     training_positions = []
     training_scores = []
@@ -51,6 +51,9 @@ def main():
    # pickle data to load into model later
     data = [training_positions, training_scores]
     pickle.dump( data , open("training_set_1.p", "wb") )
+    end = time.time()
+    print(end - start)
+    print(len(training_positions))
 
 
 
