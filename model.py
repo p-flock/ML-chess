@@ -12,10 +12,21 @@ model.compile(optimizer='rmsprop',
         metrics=['accuracy'])
 
 # Generate dummy data
-import numpy as np
-data = np.random.random((1000, 71))
-labels = np.random.randint(2, size=(1000, 1))
+import pickle
+vectors = pickle.load(open("first_training_set.p"))
+data = vectors[0]
+labels = vectors[1]
+
 
 # Train the model, iterating on the data in batches of 32 samples
 model.fit(data, labels, epochs=10, batch_size=32)
+model.summary()
 
+# save model as json and save weights as h5 file
+model_as_json = model.to_json()
+with open("chess_model.json", "r") as json_file:
+    json_file.write(model_as_json)
+
+#weights
+model.save_weights("model_weights.h5")
+print("saved model and weights to disk")
