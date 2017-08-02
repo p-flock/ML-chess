@@ -46,7 +46,7 @@ def main():
                 node = next_node
             # send it to vectorizing function
             training_positions.append(vectorize_position(node.board().epd()))
-            training_scores.append(comp_eval(node.board().epd()))
+            training_scores.append(comp_eval(node.board()))
 
    # pickle data to load into model later
     data = [training_positions, training_scores]
@@ -101,8 +101,8 @@ def vectorize_position(epd):
 
 
 # run position through chess engine
-def comp_eval(epd):
-    engine.position(epd)
+def comp_eval(board):
+    engine.position(board)
     engine.go(movetime=1000)
     return info_handler.info["score"][1]
 
