@@ -38,7 +38,7 @@ def main():
             moves = node.main_line()
             game_length = node.board().variation_san(moves).count('.')
             game_length = (game_length * 2)
-            position = randint(1, game_length)
+            position = randint(game_length)
             for x in range(1, position):
                 next_node = node.variations[0]
                 node = next_node
