@@ -36,7 +36,7 @@ def main():
 
     # loop through pgns (Obviously change from a single game, but works on a single game too.)
     # Hideously long runtime on a large file.
-    with open("2015_chess_games.pgn", "r", encoding="latin-1") as pgn:
+    with open("2010games.pgn", "r", encoding="latin-1") as pgn:
         game = chess.pgn.read_game(pgn)
         while game != None:
             node = game
@@ -62,7 +62,7 @@ def main():
 
    # pickle data to load into model later
     data = [training_positions, training_scores]
-    pickle.dump( data , open("training_set_2.p", "wb") )
+    pickle.dump( data , open("training_set_3.p", "wb") )
     end = time.time()
     print(end - start)
     print(len(training_positions))
