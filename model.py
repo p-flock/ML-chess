@@ -13,7 +13,7 @@ model.compile(optimizer='rmsprop',
 
 # Generate dummy data
 import pickle
-vectors = pickle.load(open("first_training_set.p", "rb"))
+vectors = pickle.load(open("training_set_3.p", "rb"))
 data = vectors[0]
 labels = vectors[1]
 
@@ -23,13 +23,7 @@ model.fit(data, labels, epochs=200, batch_size=32)
 model.summary()
 
 # save model as json and save weights as h5 file
-<<<<<<< HEAD
-# model_as_json = model.to_json()
-# with open("chess_model.json", "r") as json_file:
-    # json_file.write(model_as_json)
 model.save("chess_model.h5")
-=======
->>>>>>> 3b39f82cd8a68eea3ccc93cc8b85304a4f1f59a6
 
 #weights
 model.save_weights("model_weights.h5")
