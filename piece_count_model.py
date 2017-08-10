@@ -14,10 +14,7 @@ model.add(Dense(12, input_shape=(12,)))
 model.add(Activation('tanh'))
 model.add(Dense(24, activation='tanh', ))
 model.add(Dense(48, activation='tanh', ))
-model.add(Dense(96, activation='tanh', ))
 model.add(Dropout(0.2))
-model.add(Dense(48, activation='tanh', ))
-model.add(Dense(24, activation='tanh', ))
 model.add(Dense(12, activation='tanh', ))
 model.add(Dense(1, activation='tanh', ))
 
@@ -35,7 +32,7 @@ y_min_max_scaler = preprocessing.MinMaxScaler(feature_range=(-1, 1))
 labels = y_min_max_scaler.fit_transform(y_values)
 
 history = model.fit(data, labels, epochs=100, batch_size=5000, validation_split=0.01)
-model.save("piece_count.h5")
+model.save("piece_count_5_layer.h5")
 
 #plot loss and two error functions
 plt.plot(history.history['mean_squared_error'])
